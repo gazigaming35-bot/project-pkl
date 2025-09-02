@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About</title>
+  
+  <!-- Import font Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-color: #2b2f38;
+      --second-bg-color: #3b404a;
+      --text-color: #f1f1f1;
+      --main-color: #2c2e2e;
+      --transition: all 0.4s ease-in;
+
+      /* Gradasi lebih soft */
+      --gradient-bg: linear-gradient(135deg, #2b2f38, #343a46, #1a1d22);
+    }
+
+    html {
+      font-size: 16px; /* jangan pakai koma (15,5 salah) */
+      overflow-x: hidden;
+    }
+
+    body {
+      background: var(--gradient-bg);
+      color: var(--text-color);
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      line-height: 1.6;
+    }
+
+    section {
+      min-height: 100vh;
+      padding: 5rem 9% 2rem;
+      background: var(--second-bg-color);
+      border-radius: 20px;
+      margin: 2rem;
+      transition: var(--transition);
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .service {
+      font-size: 1.5rem;
+      font-weight: 300;
+      max-width: 800px;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease-out;
+    }
+
+    .service.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <section>
+    <div class="service">
+    Di SMP saya meluangkan sebagian waktu saya untuk menonton anime dan mengerjakan tugas daring. Saat smp, hobi saya sendiri yaitu mendengarkan musik dan memainkan alat musik.
+    </div>
+  </section>
+
+  <script>
+    const services = document.querySelectorAll('.service');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    services.forEach(service => {
+      observer.observe(service);
+    });
+  </script>
+</body>
+</html>
